@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/jk.css">
 
@@ -39,23 +42,64 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
-            <li><a class="scroll-link" data-scroll-to="#about">About</a></li>
+            <li><a class="scroll-link" data-scroll-to="#details">Details</a></li>
             <li><a class="scroll-link" data-scroll-to="#photos">Photos</a></li>
+            <li><a class="scroll-link" data-scroll-to="#location">Location</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
 
-    <header class="screen-height"></header>
+    <header class="screen-height">
+      <div class="caption-lg">
+        <h1>June 11, 2016</h1>
+      </div>
+      <div class="caption-md">
+        <h3>June 11, 2016</h3>
+      </div>
+      <div class="caption-sm">
+        <h3>June 11, 2016</h3>
+      </div>
+    </header>
 
-    <section class="screen-height blue scrollable" id="about">
+    <section class="screen-height blue scrollable" id="details">
       <div class="overlay">
         <div class="container">
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
-              <h1>About</h1>
+              <h1>Details</h1>
               <hr class="symbol"/>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <i class="fa fa-bed details-icon"></i>
+              <p class="center">
+                <a href="http://www.lenoxhotel.com/" target="_blank">The Lexon Hotel in Boston</a>
+              </p>
+              <p>Booking:</p>
+              <ul>
+                <li><a href="http://www.phgsecure.com/IBE/bookingRedirect.ashx?propertyCode=BOSLH&arrivalDate=06/10/16&group=auor061016" target="_blank">Online</a></li>
+                <li>OR call <a href="tel:6175365300">(617) 536-5300</a> and ask for the Augdahl/Orlowski Wedding Block</li>
+              </ul>
+            </div>
+            <div class="col-lg-4">
+              <i class="fa fa-heart details-icon"></i>
+              <p class="center">
+                June 11, 2016 <br/>
+                <a class="scroll-link" data-scroll-to="#location">Smith & Wollensky, Back Bay</a> <br/>
+                Ceremony starts at 5 PM
+              </p>
+            </div>
+            <div class="col-lg-4">
+              <i class="fa fa-gift details-icon"></i>
+              <p>We have two gift registries:</p>
+              <ul>
+                <li><a href="http://www.crateandbarrel.com/gift-registry/kirsten-augdahl-and-jesse-orlowski/r5415812" target="_blank">Crate & Barrel</a></li>
+                <li><a href="http://www1.macys.com/registry/wedding/guest/?registryId=6469788" target="_blank">Macy's</a></li>
+              </ul>
+              <p>Thank you!</p>
             </div>
           </div>
         </div>
@@ -93,6 +137,10 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+    </section>
+
+    <section id="location" class="scrollable screen-height" data-fudge="100">
+      <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=Smith%20%26%20Wollensky%2C%20Back%20Bay&key=AIzaSyAoJFu-DVdnoW2CMXB7ZeYA5gKAUgrARs8" allowfullscreen></iframe>
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -142,12 +190,47 @@
         var max = function(a, b) { return (a < b) ? b : a; };
 
         var updateSize = function() {
-          var minHeight = $self.attr("data-min-height") || 0;
-          $self.css("min-height", max($(window).height(), minHeight));
+          $self.each(function() {
+            $this = $(this);
+            var minHeight = $this.attr("data-min-height") || 0;
+            var fudge = parseInt($this.attr("data-fudge"), 10) || 0;
+            $this.css("min-height", max($(window).height() - fudge, minHeight));
+          });
         };
 
         $(window).resize(updateSize);
         
+        $(function() {
+          $self = $(selector);
+          updateSize();
+        });
+      };
+
+      var centerAbsolute = function(selector) {
+        var $self;
+
+        var updateSize = function() {
+          var top = ($(window).height() - $self.height()) / 2.0;
+          $self.css("top", top);
+        };
+
+        $(window).resize(updateSize);
+        
+        $(function() {
+          $self = $(selector);
+          updateSize();
+        });
+      };
+
+      var fillWithIframeChild = function(selector) {
+        var $self;
+
+        var updateSize = function() {
+          $self.find("iframe").height($self.height()).width($self.width());
+        };
+
+        $(window).resize(updateSize);
+
         $(function() {
           $self = $(selector);
           updateSize();
@@ -231,6 +314,9 @@
       screenHeight(".carousel-inner .item");
       scrollLinks("a.scroll-link");
       scrollables(".scrollable");
+      centerAbsolute("header > .caption-lg");
+      centerAbsolute("header > .caption-md");
+      fillWithIframeChild("section#location"); 
 
       $(function() {
         if (parsedHash.at) {
