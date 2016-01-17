@@ -20,6 +20,10 @@ Turquoise: 105,209,204
   src: url('../plugins/brotherhood-script/Brotherhood_Script.ttf');
 }
 
+#location iframe{
+  pointer-events: none;
+}
+
 .center {
  text-align: center;
 }

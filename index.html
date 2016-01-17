@@ -328,6 +328,9 @@
         if (parsedHash.at) {
           $("#" + parsedHash.at).scrollTo(0);
         }
+        $("#location").click(function() {
+          $("#location > iframe").css("pointer-events", "auto");
+        });
       });
     </script>
   </body>
