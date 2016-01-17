@@ -21,7 +21,7 @@
   <body>
 
     <!-- Nav Bar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top top">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -111,11 +111,41 @@
       </div>
     </header>
 
+    <section style="height:1000px" id="about">
+      BLAH
+    </section>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
+      var nav = function(selector) {
+        var $self;
+        
+        var wasTransparent = true;
+        var first = true;
+        var updateColor = function(time) {
+          var transparent = $(document).scrollTop() < 50;
+          if (first || (wasTransparent != transparent)) {
+            $self.animate({
+              backgroundColor: (transparent ? "rgba(0,0,0,0)" : "#FA6900")
+            }, time);
+            first = false;
+          }
+          wasTransparent = transparent;
+        };
+
+        $(window).scroll(updateColor.bind(null, 500));
+        
+        $(function() {
+          $self = $(selector);
+          updateColor(0);
+        });
+      };      
+
       var carousel = function(selector) {
         var $self;
 
@@ -128,13 +158,14 @@
         $(function() {
           $self = $(selector);
           $self.carousel({
-            interval: 2000
+            interval: 4000
           });
           updateSize();
         });
       };
 
       carousel("#photoCarousel");
+      nav("nav");
     </script>
   </body>
 </html>

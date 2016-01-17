@@ -1,6 +1,29 @@
+/*
+Colors:
+Blue:        #69D2E7
+Light Blue:  #A7DBDB
+Neutral:     #E0E4CC
+Orange:      #F38630
+Dark Orange: #FA6900
+*/
+
+body {
+  background-color: #E0E4CC;
+}
+
 .navbar {
   margin-bottom: 0px;
   border-radius: 0px;
+
+  background-color: #FA6900; /* #F38630 */
+    
+  border-style: none;
+  border-bottom-style: solid;
+  border-color: #888;
+}
+
+.navbar.top {
+  background: rgba(0, 0, 0, 0);
 }
 
 .carousel {
