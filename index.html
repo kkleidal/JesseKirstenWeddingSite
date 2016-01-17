@@ -50,7 +50,16 @@
     <header class="screen-height"></header>
 
     <section class="screen-height blue scrollable" id="about">
-      <div class="overlay"></div>
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <h1>About</h1>
+              <hr class="symbol"/>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="photos" class="scrollable">
@@ -110,7 +119,7 @@
           var transparent = $(document).scrollTop() < 50;
           if (first || (wasTransparent != transparent)) {
             $self.animate({
-              backgroundColor: (transparent ? "rgba(0,0,0,0)" : "#FA6900")
+              backgroundColor: (transparent ? "rgba(255,255,255,0.2)" : "#FA6900")
             }, time);
             first = false;
           }

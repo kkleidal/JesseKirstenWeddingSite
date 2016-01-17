@@ -7,8 +7,40 @@ Orange:      #F38630
 Dark Orange: #FA6900
 */
 
+@font-face {
+  font-family: brotherhood;
+  src: url('../plugins/brotherhood-script/Brotherhood_Script.ttf');
+}
+
+h1 {
+  font-family: brotherhood;
+  font-size: 5em;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+hr.symbol {
+  margin-top: 5px;
+  padding: 0;
+  border: none;
+  border-top: medium double #333;
+  color: #333;
+  text-align: center;
+  width: 150px;
+}
+
 body {
   background-color: #E0E4CC;
+  font-weight: 200;
+}
+
+nav * {
+  color: #000 !important;
+}
+
+.navbar-brand {
+  font-family: brotherhood;
+  font-weight: normal;
 }
 
 header {
@@ -26,6 +58,7 @@ section > .overlay {
   position: absolute;
   top: 0;
   left: 0;
+  padding-top: 40px;
 }
 
 section.blue {
@@ -67,3 +100,4 @@ section.blue > .overlay {
   -o-background-size: cover !important;
   background-size: cover !important;
 }
+
