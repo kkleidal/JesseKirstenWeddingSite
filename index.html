@@ -64,43 +64,45 @@
     </header>
 
     <section class="screen-height blue scrollable" id="details">
-      <div class="overlay">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-              <h1>Details</h1>
-              <hr class="symbol"/>
-            </div>
+      <div class="overlay"></div>
+      <div class="container content">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h1>Details</h1>
+            <hr class="symbol"/>
           </div>
-          <div class="row">
-            <div class="col-lg-4">
-              <i class="fa fa-bed details-icon"></i>
-              <p class="center">
-                <a href="http://www.lenoxhotel.com/" target="_blank">The Lexon Hotel in Boston</a>
-              </p>
-              <p>Booking:</p>
-              <ul>
-                <li><a href="http://www.phgsecure.com/IBE/bookingRedirect.ashx?propertyCode=BOSLH&arrivalDate=06/10/16&group=auor061016" target="_blank">Online</a></li>
-                <li>OR call <a href="tel:6175365300">(617) 536-5300</a> and ask for the Augdahl/Orlowski Wedding Block</li>
-              </ul>
-            </div>
-            <div class="col-lg-4">
-              <i class="fa fa-heart details-icon"></i>
-              <p class="center">
-                June 11, 2016 <br/>
-                <a class="scroll-link" data-scroll-to="#location">Smith & Wollensky, Back Bay</a> <br/>
-                Ceremony starts at 5 PM
-              </p>
-            </div>
-            <div class="col-lg-4">
-              <i class="fa fa-gift details-icon"></i>
-              <p>We have two gift registries:</p>
-              <ul>
-                <li><a href="http://www.crateandbarrel.com/gift-registry/kirsten-augdahl-and-jesse-orlowski/r5415812" target="_blank">Crate & Barrel</a></li>
-                <li><a href="http://www1.macys.com/registry/wedding/guest/?registryId=6469788" target="_blank">Macy's</a></li>
-              </ul>
-              <p>Thank you!</p>
-            </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-sm-8">
+            <i class="fa fa-bed details-icon"></i>
+            <p class="center">
+              <a href="http://www.lenoxhotel.com/" target="_blank">The Lexon Hotel in Boston</a>
+            </p>
+            <p class="justify">
+              You can book your room 
+              <a href="http://www.phgsecure.com/IBE/bookingRedirect.ashx?propertyCode=BOSLH&arrivalDate=06/10/16&group=auor061016" target="_blank">online</a>
+              or call
+              <a href="tel:6175365300">(617) 536-5300</a>
+              and ask for the Augdahl/Orlowski Wedding Block
+            </p>
+          </div>
+          <div class="col-lg-4 col-sm-8">
+            <i class="fa fa-heart details-icon"></i>
+            <p class="center">
+              June 11, 2016 <br/>
+              <a class="scroll-link" data-scroll-to="#location">Smith & Wollensky, Back Bay</a> <br/>
+              Ceremony starts at 5 PM
+            </p>
+          </div>
+          <div class="col-lg-4 col-sm-8">
+            <i class="fa fa-gift details-icon"></i>
+            <p class="center">
+              We have two gift registries:
+              <a href="http://www.crateandbarrel.com/gift-registry/kirsten-augdahl-and-jesse-orlowski/r5415812" target="_blank">Crate & Barrel</a>
+              and 
+              <a href="http://www1.macys.com/registry/wedding/guest/?registryId=6469788" target="_blank">Macy's</a>. <br/>
+              Thank you!
+            </p>
           </div>
         </div>
       </div>
@@ -259,6 +261,10 @@
           var targets = $(selector);
           if (targets) {
             $(targets[0]).scrollTo(1000);
+          }
+          var $navbar = $(".navbar-toggle");
+          if ($navbar.attr("aria-expanded") === "true") {
+            $navbar.click();
           }
         };
 
