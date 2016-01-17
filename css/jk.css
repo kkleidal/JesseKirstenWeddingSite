@@ -11,6 +11,31 @@ body {
   background-color: #E0E4CC;
 }
 
+header {
+  background: url('../img/engagement5.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+section {
+  position: relative;
+}
+
+section > .overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+section.blue {
+  background: url('../plugins/contemporary_china_2/contemporary_china_2.png') repeat fixed;
+}
+
+section.blue > .overlay {
+  background: rgba(167,219,219,0.6);
+}
+
 .navbar {
   margin-bottom: 0px;
   border-radius: 0px;

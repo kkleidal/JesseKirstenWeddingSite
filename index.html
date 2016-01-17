@@ -76,8 +76,14 @@
     </nav>
 
 
-    <!-- Slideshow -->
-    <header>
+    <header class="screen-height"></header>
+
+    <section class="screen-height blue" id="about">
+      <div class="overlay"></div>
+    </section>
+
+    <section id="photos">
+      <!-- Slideshow -->
       <div id="photoCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -86,7 +92,6 @@
           <li data-target="#photoCarousel" data-slide-to="2"></li>
           <li data-target="#photoCarousel" data-slide-to="3"></li>
           <li data-target="#photoCarousel" data-slide-to="4"></li>
-          <li data-target="#photoCarousel" data-slide-to="5"></li>
         </ol>
         
         <!-- Slides -->
@@ -95,7 +100,6 @@
           <div class="item" style="background:url('img/engagement2.jpg') no-repeat center center fixed;"></div>
           <div class="item" style="background:url('img/engagement3.jpg') no-repeat center center fixed;"></div>
           <div class="item" style="background:url('img/engagement4.jpg') no-repeat center center fixed;"></div>
-          <div class="item" style="background:url('img/engagement5.jpg') no-repeat center center fixed;"></div>
           <div class="item" style="background:url('img/engagement6.jpg') no-repeat center center fixed;"></div>
         </div>
 
@@ -109,10 +113,6 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-    </header>
-
-    <section style="height:1000px" id="about">
-      BLAH
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -146,26 +146,39 @@
         });
       };      
 
-      var carousel = function(selector) {
+      var screenHeight = function(selector) {
         var $self;
 
+        var max = function(a, b) { return (a < b) ? b : a; };
+
         var updateSize = function() {
-          $self.find(".carousel-inner .item").css("height", $(window).height());
+          var minHeight = $self.attr("data-min-height") || 0;
+          $self.css("min-height", max($(window).height(), minHeight));
         };
 
         $(window).resize(updateSize);
         
         $(function() {
           $self = $(selector);
+          updateSize();
+        });
+      };
+
+      var carousel = function(selector) {
+        var $self;
+
+        $(function() {
+          $self = $(selector);
           $self.carousel({
             interval: 4000
           });
-          updateSize();
         });
       };
 
       carousel("#photoCarousel");
       nav("nav");
+      screenHeight(".screen-height");
+      screenHeight(".carousel-inner .item");
     </script>
   </body>
 </html>
