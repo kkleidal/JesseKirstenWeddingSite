@@ -7,6 +7,14 @@ Orange:      #F38630
 Dark Orange: #FA6900
 */
 
+/* Colors based on dresses:
+Dark Purple:  71,41,69
+Violet: 85,51,102
+Dark Blue: 44,29,140
+Teal:  36,113,140
+Turquoise: 105,209,204
+*/
+
 @font-face {
   font-family: brotherhood;
   src: url('../plugins/brotherhood-script/Brotherhood_Script.ttf');
@@ -34,13 +42,10 @@ body {
   font-weight: 200;
 }
 
-nav * {
-  color: #000 !important;
-}
-
 .navbar-brand {
   font-family: brotherhood;
   font-weight: normal;
+  font-size: 2.5em;
 }
 
 header {
@@ -66,18 +71,22 @@ section.blue {
 }
 
 section.blue > .overlay {
-  background: rgba(167,219,219,0.6);
+  background: rgba(105,209,204,0.6);
 }
 
 .navbar {
   margin-bottom: 0px;
   border-radius: 0px;
 
-  background-color: #FA6900; /* #F38630 */
+  background-color: rgb(71,41,69); /* #F38630 */
     
   border-style: none;
   border-bottom-style: solid;
-  border-color: #888;
+  border-color: #333;
+}
+
+.navbar * {
+  text-shadow: none !important;
 }
 
 .navbar.top {

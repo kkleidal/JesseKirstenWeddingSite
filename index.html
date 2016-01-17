@@ -119,7 +119,9 @@
           var transparent = $(document).scrollTop() < 50;
           if (first || (wasTransparent != transparent)) {
             $self.animate({
-              backgroundColor: (transparent ? "rgba(255,255,255,0.2)" : "#FA6900")
+              backgroundColor: (transparent ? "rgba(255,255,255,0.2)" : "rgb(71,41,69)"),
+              color: (transparent ? "rgba(0,0,0)" : "rgb(255,255,255)"),
+              borderColor: (transparent ? "#888" : "#333")
             }, time);
             first = false;
           }
