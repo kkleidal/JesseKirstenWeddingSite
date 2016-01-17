@@ -35,8 +35,10 @@ Turquoise: 105,209,204
   color: rgb(85,51,102);
 }
 
-#details .row > div {
-  margin-bottom: 40px;
+@media screen and (max-width: 768px) {
+  #details .row > div {
+    margin-bottom: 40px;
+  }
 }
 
 h1,h2,h3,h4,h5,h6 {
