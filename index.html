@@ -127,10 +127,10 @@
         
         <!-- Slides -->
         <div class="carousel-inner" role="listbox">
-          <div class="item active" style="background:url('img/engagement1.jpg') no-repeat center center fixed;"></div>
-          <div class="item" style="background:url('img/engagement3.jpg') no-repeat center center fixed;"></div>
-          <div class="item" style="background:url('img/engagement4.jpg') no-repeat center center fixed;"></div>
-          <div class="item" style="background:url('img/engagement6.jpg') no-repeat center center fixed;"></div>
+          <div class="preload item active" x-preload="img/engagement1.jpg" style="background:url('img/engagement1-small.jpg') no-repeat center center fixed;"></div>
+          <div class="preload item" x-preload="img/engagement3.jpg" style="background:url('img/engagement3-small.jpg') no-repeat center center fixed;"></div>
+          <div class="preload item" x-preload="img/engagement4.jpg" style="background:url('img/engagement4-small.jpg') no-repeat center center fixed;"></div>
+          <div class="preload item" x-preload="img/engagement6.jpg" style="background:url('img/engagement6-small.jpg') no-repeat center center fixed;"></div>
         </div>
 
         <!-- Flippers -->
@@ -156,6 +156,40 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
+      var images = []
+      function preload(src, callback) {
+        var img = new Image();
+        $(img).on('load', function() {
+          callback(img);
+        });
+        img.src = src;
+        images.push(img);
+      }
+
+      function preloadTopImage() {
+        preload("img/engagement5.jpg", function(img) {
+          $(function() {
+            $("header").css("background-image", "url('img/engagement5.jpg')"); // no-repeat center center fixed");
+          });
+        });
+      }
+
+      function preloadOther(ind, val) {
+        $el = $(val);
+        preload($el.attr("x-preload"), function(img) {
+          this.css("background-image", "url('" + this.attr("x-preload") + "')");
+        }.bind($el));
+      }
+
+      function preloadAll() {
+        $(function() {
+         $.each($(".preload"), preloadOther);
+        });
+      }
+
+      preloadTopImage();
+      preloadAll();
+
       $.fn.extend({
         scrollTo: function(time) {
           $('html, body').animate({
